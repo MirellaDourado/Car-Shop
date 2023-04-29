@@ -15,6 +15,7 @@ export default class CarController {
   public async create() {
     const car = this.req.body
     try {
+      if (car.status === undefined) car.status = false
       const newCar = await this.service.create(car);
       return this.res.status(201).json(newCar)
     } catch (error) {
