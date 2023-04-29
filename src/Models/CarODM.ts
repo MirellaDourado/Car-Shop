@@ -1,17 +1,10 @@
-import {
-  Model,
-  Schema,
-  model,
-  models,
-} from 'mongoose';
+import { Schema } from 'mongoose';
 import ICar from '../Interfaces/ICar';
+import AbstractODM from './AbstractODM';
   
-export default class CarODM {
-  private schema: Schema;
-  private model: Model<ICar>;
-
+export default class CarODM extends AbstractODM<ICar>{
   constructor() {
-    this.schema = new Schema<ICar>(
+    const schema = new Schema<ICar>(
       {
         model: { type: String, required: true },
         year: { type: Number, required: true },
@@ -39,22 +32,6 @@ export default class CarODM {
         },
       },
     );
-    this.model = models.Car || model('Car', this.schema);
-  }
-
-  public async create(car: ICar): Promise<ICar> {
-    return this.model.create({ ...car });
-  }
-
-  public async getAll(): Promise<ICar[]> {
-    return this.model.find();
-  }
-
-  public async getById(id: string): Promise<ICar | null> {
-    return this.model.findById(id);
-  }
-
-  public async update(id: string, carUpdate: ICar): Promise<ICar | null> {
-    return this.model.findByIdAndUpdate(id, carUpdate, { new: true });
+    super(schema, 'Car');
   }
 }
