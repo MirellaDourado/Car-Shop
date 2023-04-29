@@ -1,7 +1,7 @@
 import IMotocycle from '../Interfaces/IMotorcycle';
 import MotorcycleODM from '../Models/MotorcycleODM';
 
-export default class CarService {
+export default class MotorcycleService {
   public async create(motocycle: IMotocycle) {
     const motorcycleODM = new MotorcycleODM();
     const newMotorcycle = await motorcycleODM.create(motocycle);
@@ -21,5 +21,11 @@ export default class CarService {
     const motorcycleODM = new MotorcycleODM();
     const allMotorcycles = await motorcycleODM.getAll();
     return allMotorcycles;
+  }
+
+  public async getById(id: string) {
+    const motorcycleODM = new MotorcycleODM();
+    const motorcycle = await motorcycleODM.getById(id);
+    return motorcycle;
   }
 }
