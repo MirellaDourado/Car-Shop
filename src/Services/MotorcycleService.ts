@@ -1,3 +1,4 @@
+import { isValidObjectId } from 'mongoose';
 import IMotocycle from '../Interfaces/IMotorcycle';
 import { HttpException } from '../Middlewares/HttpException';
 import MotorcycleODM from '../Models/MotorcycleODM';
@@ -25,6 +26,7 @@ export default class MotorcycleService {
   }
 
   public async getById(id: string) {
+    if(!isValidObjectId(id)) throw new HttpException(422, 'Invalid mongo id')
     const motorcycleODM = new MotorcycleODM();
     const motorcycle = await motorcycleODM.getById(id);
     if(motorcycle === null) throw new HttpException(404, 'Motorcycle not found')
