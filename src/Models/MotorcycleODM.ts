@@ -4,14 +4,14 @@ import {
   model,
   models,
 } from 'mongoose';
-import IMotocycle from '../Interfaces/IMotocycle';
+import IMotorcycle from '../Interfaces/IMotorcycle';
   
 export default class CarODM {
   private schema: Schema;
-  private model: Model<IMotocycle>;
+  private model: Model<IMotorcycle>;
 
   constructor() {
-    this.schema = new Schema<IMotocycle>(
+    this.schema = new Schema<IMotorcycle>(
       {
         model: { type: String, required: true },
         year: { type: Number, required: true },
@@ -39,10 +39,10 @@ export default class CarODM {
         },
       },
     );
-    this.model = models.Motocycle || model('Motocycle', this.schema);
+    this.model = models.Motocycle || model('Motorcycle', this.schema);
   }
 
-  public async create(moto: IMotocycle): Promise<IMotocycle> {
-    return this.model.create({ ...moto });
+  public async create(motorcycle: IMotorcycle): Promise<IMotorcycle> {
+    return this.model.create({ ...motorcycle });
   }
 }
