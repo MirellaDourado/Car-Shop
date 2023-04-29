@@ -7,4 +7,7 @@ carRouter.post('/', (req: Request, res: Response) => new CarController(req, res)
 
 carRouter.get('/', (req: Request, res: Response) => new CarController(req, res).getAll());
 
+carRouter.get('/:id', (req: Request, res: Response) => new CarController(req, res).getById());
+
+
 export default carRouter;

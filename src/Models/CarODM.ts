@@ -50,7 +50,7 @@ export default class CarODM {
     return this.model.find();
   }
 
-  public async getById(id: string): Promise<ICar> {
+  public async getById(id: string): Promise<ICar | null> {
     return this.model.findById(id);
   }
 }
