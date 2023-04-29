@@ -31,4 +31,14 @@ export default class CarController {
       return this.res.status(500).json({ message: error });
     }
   }
+
+  public async getById() {
+    const { id } = this.req.params
+    try {
+      const car = await this.service.getById(id);
+      return this.res.status(200).json(car);
+    } catch (error) {
+      return this.res.status(500).json({ message: error });
+    }
+  }
 }
