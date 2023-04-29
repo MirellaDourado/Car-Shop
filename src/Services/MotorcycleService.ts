@@ -26,10 +26,10 @@ export default class MotorcycleService {
   }
 
   public async getById(id: string) {
-    if(!isValidObjectId(id)) throw new HttpException(422, 'Invalid mongo id')
+    if (!isValidObjectId(id)) throw new HttpException(422, 'Invalid mongo id');
     const motorcycleODM = new MotorcycleODM();
     const motorcycle = await motorcycleODM.getById(id);
-    if(motorcycle === null) throw new HttpException(404, 'Motorcycle not found')
+    if (motorcycle === null) throw new HttpException(404, 'Motorcycle not found');
     return motorcycle;
   }
 }

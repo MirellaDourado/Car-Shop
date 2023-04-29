@@ -21,5 +21,4 @@ motorcycleRouter.get(
     .getById(),
 );
 
-
 export default motorcycleRouter;
