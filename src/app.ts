@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/cars', carRouter);
-app.use('/motorcycle', motorcycleRouter);
+app.use('/motorcycles', motorcycleRouter);
 app.use(errorMiddleware);
 
 export default app;
