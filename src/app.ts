@@ -10,6 +10,6 @@ app.get('/', (req, res) => {
 });
 
 app.use('/cars', carRouter);
-app.use(errorMiddleware )
+app.use(errorMiddleware);
 
 export default app;

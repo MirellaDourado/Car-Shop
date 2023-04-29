@@ -35,7 +35,7 @@ export default class CarController {
   }
 
   public async getById() {
-    const { id } = this.req.params
+    const { id } = this.req.params;
     try {
       const { type, message } = await this.service.getById(id);
       return this.res.status(type).json(message);
