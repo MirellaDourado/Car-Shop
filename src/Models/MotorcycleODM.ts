@@ -20,8 +20,8 @@ export default class MotorcycleODM extends AbstractODM<IMotorcycle> {
             const transformed = {
               id: ret._id,
               buyValue: ret.buyValue,
-              engineCapacity: ret.seatsQty,
-              category: ret.doorsQty,
+              engineCapacity: ret.engineCapacity,
+              category: ret.category,
               color: ret.color,
               model: ret.model,
               year: ret.year,
