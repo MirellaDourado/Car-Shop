@@ -1,10 +1,6 @@
-export default interface IMotocycle {
-  id?: string | undefined
-  model: string
-  year: number
-  color: string
-  status?: boolean
-  buyValue: number
+import IVehicle from "./IVehicle"
+
+export default interface IMotocycle extends IVehicle{
   category: string
   engineCapacity: number
 }
