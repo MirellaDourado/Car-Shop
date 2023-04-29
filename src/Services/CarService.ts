@@ -23,10 +23,11 @@ export default class CarService {
     return allCars;
   }
 
-  public async getById(id: string) {
+  public async getById(id: string): Promise<{ type: number, message: string | ICar }> {
     const carODM = new CarODM;
     const car = await carODM.getById(id);
-    return car;
+    if (car === null) return { type: 404, message:'Car not found' }
+    return { type: 200, message: car };
   }
 
 }
