@@ -1,5 +1,5 @@
 export default interface ICar {
-  id: number | undefined
+  id: string | undefined
   model: string
   year: number
   color: string
