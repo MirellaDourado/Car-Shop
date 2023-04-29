@@ -1,10 +1,10 @@
-import ICar from "../Interfaces/ICar";
-import CarODM from "../Models/CarODM";
+import ICar from '../Interfaces/ICar';
+import CarODM from '../Models/CarODM';
 
 export default class CarService {
-  public async create (car: ICar) {
+  public async create(car: ICar) {
     const carODM = new CarODM();
-    const newCar = await carODM.create(car)
+    const newCar = await carODM.create(car);
     return {
       id: newCar.id,
       model: newCar.model,

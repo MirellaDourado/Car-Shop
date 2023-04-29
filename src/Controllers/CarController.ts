@@ -1,4 +1,4 @@
-import { Request, Response } from 'express'
+import { Request, Response } from 'express';
 import CarService from '../Services/CarService';
 
 export default class CarController {
@@ -13,13 +13,13 @@ export default class CarController {
   }
 
   public async create() {
-    const car = this.req.body
+    const car = this.req.body;
     try {
-      if (car.status === undefined) car.status = false
+      if (car.status === undefined) car.status = false;
       const newCar = await this.service.create(car);
-      return this.res.status(201).json(newCar)
+      return this.res.status(201).json(newCar);
     } catch (error) {
-      return this.res.status(500).json({ message: error })
+      return this.res.status(500).json({ message: error });
     }
   }
 }

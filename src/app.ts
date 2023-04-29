@@ -6,7 +6,7 @@ app.use(express.json());
 
 app.get('/', (req, res) => {
   res.status(200).json({ message: 'O Docker continua doido' });
-})
+});
 
 app.use('/cars', carRouter);
 
