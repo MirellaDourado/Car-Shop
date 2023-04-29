@@ -1,6 +1,7 @@
 import express from 'express';
 import carRouter from './Routers/CarRoute';
 import errorMiddleware from './Middlewares/HttpException';
+import motorcycleRouter from './Routers/MotorcyleRouter';
 
 const app = express();
 app.use(express.json());
@@ -10,6 +11,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/cars', carRouter);
+app.use('/motorcycle', motorcycleRouter);
 app.use(errorMiddleware);
 
 export default app;
