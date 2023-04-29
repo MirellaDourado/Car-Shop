@@ -22,4 +22,11 @@ export default class CarService {
     const allCars = await carODM.getAll();
     return allCars;
   }
+
+  public async getById(id: string) {
+    const carODM = new CarODM;
+    const car = await carODM.getById(id);
+    return car;
+  }
+
 }
