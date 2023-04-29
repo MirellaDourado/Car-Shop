@@ -16,4 +16,10 @@ export default class CarService {
       buyValue: newCar.buyValue,
     };
   }
+
+  public async getAll() {
+    const carODM = new CarODM;
+    const allCars = await carODM.getAll();
+    return allCars;
+  }
 }
