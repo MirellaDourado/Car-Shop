@@ -1,4 +1,5 @@
 import IMotocycle from '../Interfaces/IMotorcycle';
+import { HttpException } from '../Middlewares/HttpException';
 import MotorcycleODM from '../Models/MotorcycleODM';
 
 export default class MotorcycleService {
@@ -26,6 +27,7 @@ export default class MotorcycleService {
   public async getById(id: string) {
     const motorcycleODM = new MotorcycleODM();
     const motorcycle = await motorcycleODM.getById(id);
+    if(motorcycle === null) throw new HttpException(404, 'Motorcycle not found')
     return motorcycle;
   }
 }
