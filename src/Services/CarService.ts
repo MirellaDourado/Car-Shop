@@ -32,4 +32,12 @@ export default class CarService {
     if (car === null) throw new HttpException(404, 'Car not found');
     return { type: 200, message: car };
   }
+
+  public async update(id: string, carUpdate: ICar): Promise<ICar> {
+    if (!isValidObjectId(id)) throw new HttpException(422, 'Invalid mongo id');
+    const carODM = new CarODM();
+    const car = await carODM.update(id, carUpdate);
+    if (car === null) throw new HttpException(404, 'Car not found');
+    return car;
+  }
 }
