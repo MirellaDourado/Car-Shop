@@ -46,7 +46,7 @@ export default class CarController {
 
   public async update() {
     const { id } = this.req.params;
-    const carUpdate = this.req.body
+    const carUpdate = this.req.body;
     try {
       const carUpdated = await this.service.update(id, carUpdate);
       return this.res.status(200).json(carUpdated);
