@@ -24,4 +24,13 @@ export default class MotorcycleController {
       return this.next(error);
     }
   }
+
+  public async getAll() {
+    try {
+      const allMotorcycle = await this.service.getAll();
+      return this.res.status(200).json(allMotorcycle);
+    } catch (error) {
+      return this.next(error);
+    }
+  }
 }
