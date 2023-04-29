@@ -9,4 +9,10 @@ motorcycleRouter.post(
     .create(),
 );
 
+motorcycleRouter.get(
+  '/',
+  (req: Request, res: Response, next: NextFunction) => new MotorcycleController(req, res, next)
+    .getAll(),
+);
+
 export default motorcycleRouter;
