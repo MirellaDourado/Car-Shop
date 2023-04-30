@@ -19,13 +19,13 @@ export default class MotorcycleService {
     };
   }
 
-  public async getAll() {
+  public async getAll(): Promise<IMotorcycle[]> {
     const motorcycleODM = new MotorcycleODM();
     const allMotorcycles = await motorcycleODM.getAll();
     return allMotorcycles;
   }
 
-  public async getById(id: string) {
+  public async getById(id: string): Promise<IMotorcycle> {
     if (!isValidObjectId(id)) throw new HttpException(422, 'Invalid mongo id');
     const motorcycleODM = new MotorcycleODM();
     const motorcycle = await motorcycleODM.getById(id);
@@ -33,7 +33,7 @@ export default class MotorcycleService {
     return motorcycle;
   }
 
-  public async update(id: string, updateMotorcycle: IMotorcycle) {
+  public async update(id: string, updateMotorcycle: IMotorcycle): Promise<IMotorcycle> {
     if (!isValidObjectId(id)) throw new HttpException(422, 'Invalid mongo id');
     const motorcycleODM = new MotorcycleODM();
     const motorcycle = await motorcycleODM.update(id, updateMotorcycle);
