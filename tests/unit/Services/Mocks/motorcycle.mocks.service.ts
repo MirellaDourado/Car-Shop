@@ -1,4 +1,4 @@
-import IMotorcycle from '../../../src/Interfaces/IMotorcycle';
+import IMotorcycle from '../../../../src/Interfaces/IMotorcycle';
 
 export const id = '63319d80feb9f483ee823ac5';
 

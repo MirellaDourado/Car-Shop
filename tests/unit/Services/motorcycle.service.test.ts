@@ -5,7 +5,7 @@ import MotorcycleService from '../../../src/Services/MotorcycleService';
 import Motorcycle from '../../../src/Domains/Motorcycle';
 
 import { motorcyclesArray, validMotorcycleWithStatus,
-  validMotorcycle, id } from './motorcycle.mocks.service';
+  validMotorcycle, id, updatedMotorcycle } from './Mocks/motorcycle.mocks.service';
 import { HttpException } from '../../../src/Middlewares/HttpException';
 
 describe('Testa a rota "/motorcycles"', function () {
@@ -80,40 +80,40 @@ describe('Testa a rota "/motorcycles"', function () {
     });
   });
 
-  // describe('Testa o update de um carro', function () {
-  //   it('Deve ser possível atualizar um carro', async function () {
-  //     sinon.stub(Model, 'findByIdAndUpdate').resolves(updatedMotorcycle);
+  describe('Testa o update de um carro', function () {
+    it('Deve ser possível atualizar um carro', async function () {
+      sinon.stub(Model, 'findByIdAndUpdate').resolves(updatedMotorcycle);
 
-  //     const service = new MotorcycleService();
-  //     const result = await service.update(id, updatedMotorcycle);
+      const service = new MotorcycleService();
+      const result = await service.update(id, updatedMotorcycle);
 
-  //     expect(result).to.be.deep.equal(updatedMotorcycle);
-  //   });
+      expect(result).to.be.deep.equal(updatedMotorcycle);
+    });
 
-  //   it('Deve retornar um erro ao tentar atualizar com um id inválido', async function () {
-  //     sinon.stub(Model, 'findByIdAndUpdate').resolves(null);
+    it('Deve retornar um erro ao tentar atualizar com um id inválido', async function () {
+      sinon.stub(Model, 'findByIdAndUpdate').resolves(null);
 
-  //     const service = new MotorcycleService();
-  //     try {
-  //       await service.update('12121212', updatedMotorcycle);
-  //     } catch (error: any) {
-  //       const httpError = error as HttpException;
-  //       expect(httpError.message).to.equal('Invalid mongo id');
-  //     }
-  //   });
+      const service = new MotorcycleService();
+      try {
+        await service.update('12121212', updatedMotorcycle);
+      } catch (error: any) {
+        const httpError = error as HttpException;
+        expect(httpError.message).to.equal('Invalid mongo id');
+      }
+    });
 
-  //   it('Deve retornar um erro ao tentar atualizar com um carro inexistente', async function () {
-  //     sinon.stub(Model, 'findByIdAndUpdate').resolves(null);
+    it('Deve retornar um erro ao tentar atualizar com um carro inexistente', async function () {
+      sinon.stub(Model, 'findByIdAndUpdate').resolves(null);
 
-  //     const service = new MotorcycleService();
-  //     try {
-  //       await service.update(id, updatedMotorcycle);
-  //     } catch (error: any) {
-  //       const httpError = error as HttpException;
-  //       expect(httpError.message).to.equal('Motorcycle not found');
-  //     }
-  //   });
-  // });
+      const service = new MotorcycleService();
+      try {
+        await service.update(id, updatedMotorcycle);
+      } catch (error: any) {
+        const httpError = error as HttpException;
+        expect(httpError.message).to.equal('Motorcycle not found');
+      }
+    });
+  });
   afterEach(function () {
     sinon.restore();
   });

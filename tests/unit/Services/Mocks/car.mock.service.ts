@@ -1,4 +1,4 @@
-import ICar from '../../../src/Interfaces/ICar';
+import ICar from '../../../../src/Interfaces/ICar';
 
 const unoEscada = 'Uno Escada';
 export const id = '63319d80feb9f483ee823ac5';

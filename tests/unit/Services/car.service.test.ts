@@ -4,7 +4,7 @@ import { Model } from 'mongoose';
 import CarService from '../../../src/Services/CarService';
 import Car from '../../../src/Domains/Car';
 
-import { carsArray, validCarWithStatus, validCar, id, updateCar } from './car.mock.service';
+import { carsArray, validCarWithStatus, validCar, id, updateCar } from './Mocks/car.mock.service';
 import { HttpException } from '../../../src/Middlewares/HttpException';
 
 describe('Testa a rota "/cars"', function () {
