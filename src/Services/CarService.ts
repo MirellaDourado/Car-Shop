@@ -25,12 +25,12 @@ export default class CarService {
     return allCars;
   }
 
-  public async getById(id: string): Promise<{ type: number, message: string | ICar }> {
+  public async getById(id: string): Promise<ICar> {
     if (!isValidObjectId(id)) throw new HttpException(422, 'Invalid mongo id');
     const carODM = new CarODM();
     const car = await carODM.getById(id);
     if (car === null) throw new HttpException(404, 'Car not found');
-    return { type: 200, message: car };
+    return car;
   }
 
   public async update(id: string, carUpdate: ICar): Promise<ICar> {
