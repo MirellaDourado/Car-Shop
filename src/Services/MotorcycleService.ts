@@ -1,10 +1,10 @@
 import { isValidObjectId } from 'mongoose';
-import IMotocycle from '../Interfaces/IMotorcycle';
+import IMotorcycle from '../Interfaces/IMotorcycle';
 import { HttpException } from '../Middlewares/HttpException';
 import MotorcycleODM from '../Models/MotorcycleODM';
 
 export default class MotorcycleService {
-  public async create(motocycle: IMotocycle) {
+  public async create(motocycle: IMotorcycle) {
     const motorcycleODM = new MotorcycleODM();
     const newMotorcycle = await motorcycleODM.create(motocycle);
     return {
@@ -29,6 +29,14 @@ export default class MotorcycleService {
     if (!isValidObjectId(id)) throw new HttpException(422, 'Invalid mongo id');
     const motorcycleODM = new MotorcycleODM();
     const motorcycle = await motorcycleODM.getById(id);
+    if (motorcycle === null) throw new HttpException(404, 'Motorcycle not found');
+    return motorcycle;
+  }
+
+  public async update(id: string, updateMotorcycle: IMotorcycle) {
+    if (!isValidObjectId(id)) throw new HttpException(422, 'Invalid mongo id');
+    const motorcycleODM = new MotorcycleODM();
+    const motorcycle = await motorcycleODM.update(id, updateMotorcycle);
     if (motorcycle === null) throw new HttpException(404, 'Motorcycle not found');
     return motorcycle;
   }
